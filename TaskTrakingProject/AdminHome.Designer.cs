@@ -32,25 +32,26 @@
             System.Windows.Forms.ListViewItem listViewItem1 = new System.Windows.Forms.ListViewItem(new string[] {
             "건의 드립니다",
             "2020-06-14"}, 0);
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AdminHome));
             System.Windows.Forms.ListViewItem listViewItem2 = new System.Windows.Forms.ListViewItem(new string[] {
             "건의 드립니다",
             "2020-06-14"}, 0);
             System.Windows.Forms.ListViewItem listViewItem3 = new System.Windows.Forms.ListViewItem(new string[] {
             "건의 드립니다",
             "2020-06-14"}, 0);
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AdminHome));
             this.label1 = new System.Windows.Forms.Label();
             this.nameBox = new System.Windows.Forms.Label();
             this.resultList = new System.Windows.Forms.ListView();
             this.itemTitle = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.itemDate = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.statusList = new System.Windows.Forms.ImageList(this.components);
             this.listView1 = new System.Windows.Forms.ListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.listView2 = new System.Windows.Forms.ListView();
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.statusList = new System.Windows.Forms.ImageList(this.components);
+            this.logoutBtn = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -96,6 +97,14 @@
             // itemDate
             // 
             this.itemDate.Width = 117;
+            // 
+            // statusList
+            // 
+            this.statusList.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("statusList.ImageStream")));
+            this.statusList.TransparentColor = System.Drawing.Color.Transparent;
+            this.statusList.Images.SetKeyName(0, "status_0.PNG");
+            this.statusList.Images.SetKeyName(1, "status_1.PNG");
+            this.statusList.Images.SetKeyName(2, "status_2.PNG");
             // 
             // listView1
             // 
@@ -147,19 +156,21 @@
             // 
             this.columnHeader4.Width = 117;
             // 
-            // statusList
+            // logoutBtn
             // 
-            this.statusList.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("statusList.ImageStream")));
-            this.statusList.TransparentColor = System.Drawing.Color.Transparent;
-            this.statusList.Images.SetKeyName(0, "status_0.PNG");
-            this.statusList.Images.SetKeyName(1, "status_1.PNG");
-            this.statusList.Images.SetKeyName(2, "status_2.PNG");
+            this.logoutBtn.Location = new System.Drawing.Point(518, 49);
+            this.logoutBtn.Name = "logoutBtn";
+            this.logoutBtn.Size = new System.Drawing.Size(85, 25);
+            this.logoutBtn.TabIndex = 8;
+            this.logoutBtn.Text = "로그아웃";
+            this.logoutBtn.UseVisualStyleBackColor = true;
             // 
             // AdminHome
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(648, 459);
+            this.Controls.Add(this.logoutBtn);
             this.Controls.Add(this.listView2);
             this.Controls.Add(this.listView1);
             this.Controls.Add(this.resultList);
@@ -186,5 +197,6 @@
         private System.Windows.Forms.ColumnHeader columnHeader3;
         private System.Windows.Forms.ColumnHeader columnHeader4;
         private System.Windows.Forms.ImageList statusList;
+        private System.Windows.Forms.Button logoutBtn;
     }
 }

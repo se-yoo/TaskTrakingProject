@@ -29,17 +29,15 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.ListViewItem listViewItem1 = new System.Windows.Forms.ListViewItem(new string[] {
-            "건의 드립니다",
-            "2020-06-14"}, 0);
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UserHome));
             this.nameBox = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.addItemBtn = new System.Windows.Forms.Button();
             this.resultList = new System.Windows.Forms.ListView();
-            this.statusList = new System.Windows.Forms.ImageList(this.components);
             this.itemTitle = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.itemDate = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.statusList = new System.Windows.Forms.ImageList(this.components);
+            this.logoutBtn = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // nameBox
@@ -63,12 +61,13 @@
             // 
             // addItemBtn
             // 
-            this.addItemBtn.Location = new System.Drawing.Point(493, 46);
+            this.addItemBtn.Location = new System.Drawing.Point(402, 46);
             this.addItemBtn.Name = "addItemBtn";
             this.addItemBtn.Size = new System.Drawing.Size(85, 25);
             this.addItemBtn.TabIndex = 3;
             this.addItemBtn.Text = "문의 등록";
             this.addItemBtn.UseVisualStyleBackColor = true;
+            this.addItemBtn.Click += new System.EventHandler(this.addItemBtn_Click);
             // 
             // resultList
             // 
@@ -76,8 +75,6 @@
             this.itemTitle,
             this.itemDate});
             this.resultList.HideSelection = false;
-            this.resultList.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem1});
             this.resultList.LargeImageList = this.statusList;
             this.resultList.Location = new System.Drawing.Point(55, 111);
             this.resultList.Name = "resultList";
@@ -86,14 +83,7 @@
             this.resultList.TileSize = new System.Drawing.Size(250, 34);
             this.resultList.UseCompatibleStateImageBehavior = false;
             this.resultList.View = System.Windows.Forms.View.Tile;
-            // 
-            // statusList
-            // 
-            this.statusList.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("statusList.ImageStream")));
-            this.statusList.TransparentColor = System.Drawing.Color.Transparent;
-            this.statusList.Images.SetKeyName(0, "status_0.PNG");
-            this.statusList.Images.SetKeyName(1, "status_1.PNG");
-            this.statusList.Images.SetKeyName(2, "status_2.PNG");
+            this.resultList.MouseClick += new System.Windows.Forms.MouseEventHandler(this.resultList_MouseClick);
             // 
             // itemTitle
             // 
@@ -103,17 +93,38 @@
             // 
             this.itemDate.Width = 117;
             // 
+            // statusList
+            // 
+            this.statusList.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("statusList.ImageStream")));
+            this.statusList.TransparentColor = System.Drawing.Color.Transparent;
+            this.statusList.Images.SetKeyName(0, "status_0.PNG");
+            this.statusList.Images.SetKeyName(1, "status_1.PNG");
+            this.statusList.Images.SetKeyName(2, "status_2.PNG");
+            // 
+            // logoutBtn
+            // 
+            this.logoutBtn.Location = new System.Drawing.Point(493, 46);
+            this.logoutBtn.Name = "logoutBtn";
+            this.logoutBtn.Size = new System.Drawing.Size(85, 25);
+            this.logoutBtn.TabIndex = 5;
+            this.logoutBtn.Text = "로그아웃";
+            this.logoutBtn.UseVisualStyleBackColor = true;
+            this.logoutBtn.Click += new System.EventHandler(this.logoutBtn_Click);
+            // 
             // UserHome
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(648, 459);
+            this.Controls.Add(this.logoutBtn);
             this.Controls.Add(this.resultList);
             this.Controls.Add(this.addItemBtn);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.nameBox);
             this.Name = "UserHome";
             this.Text = "UserHome";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.UserHome_FormClosed);
+            this.VisibleChanged += new System.EventHandler(this.UserHome_VisibleChanged);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -128,5 +139,6 @@
         private System.Windows.Forms.ImageList statusList;
         private System.Windows.Forms.ColumnHeader itemTitle;
         private System.Windows.Forms.ColumnHeader itemDate;
+        private System.Windows.Forms.Button logoutBtn;
     }
 }

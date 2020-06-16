@@ -28,22 +28,22 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.contentBox = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.button3 = new System.Windows.Forms.Button();
+            this.createBtn = new System.Windows.Forms.Button();
+            this.backBtn = new System.Windows.Forms.Button();
+            this.titleBox = new System.Windows.Forms.TextBox();
+            this.updateBtn = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // textBox1
+            // contentBox
             // 
-            this.textBox1.Location = new System.Drawing.Point(108, 138);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(465, 265);
-            this.textBox1.TabIndex = 18;
+            this.contentBox.Location = new System.Drawing.Point(108, 138);
+            this.contentBox.Multiline = true;
+            this.contentBox.Name = "contentBox";
+            this.contentBox.Size = new System.Drawing.Size(465, 265);
+            this.contentBox.TabIndex = 2;
             // 
             // label3
             // 
@@ -63,66 +63,70 @@
             this.label1.TabIndex = 15;
             this.label1.Text = "제목";
             // 
-            // button2
+            // createBtn
             // 
-            this.button2.Location = new System.Drawing.Point(123, 46);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(67, 23);
-            this.button2.TabIndex = 13;
-            this.button2.Text = "등록";
-            this.button2.UseVisualStyleBackColor = true;
+            this.createBtn.Location = new System.Drawing.Point(123, 46);
+            this.createBtn.Name = "createBtn";
+            this.createBtn.Size = new System.Drawing.Size(67, 23);
+            this.createBtn.TabIndex = 4;
+            this.createBtn.Text = "등록";
+            this.createBtn.UseVisualStyleBackColor = true;
+            this.createBtn.Click += new System.EventHandler(this.createBtn_Click);
             // 
-            // button1
+            // backBtn
             // 
-            this.button1.Location = new System.Drawing.Point(50, 46);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(67, 23);
-            this.button1.TabIndex = 12;
-            this.button1.Text = "뒤로";
-            this.button1.UseVisualStyleBackColor = true;
+            this.backBtn.Location = new System.Drawing.Point(50, 46);
+            this.backBtn.Name = "backBtn";
+            this.backBtn.Size = new System.Drawing.Size(67, 23);
+            this.backBtn.TabIndex = 5;
+            this.backBtn.Text = "뒤로";
+            this.backBtn.UseVisualStyleBackColor = true;
+            this.backBtn.Click += new System.EventHandler(this.backBtn_Click);
             // 
-            // textBox2
+            // titleBox
             // 
-            this.textBox2.Location = new System.Drawing.Point(108, 94);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(465, 25);
-            this.textBox2.TabIndex = 24;
+            this.titleBox.Location = new System.Drawing.Point(108, 94);
+            this.titleBox.Name = "titleBox";
+            this.titleBox.Size = new System.Drawing.Size(465, 25);
+            this.titleBox.TabIndex = 1;
             // 
-            // button3
+            // updateBtn
             // 
-            this.button3.Location = new System.Drawing.Point(123, 46);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(67, 23);
-            this.button3.TabIndex = 27;
-            this.button3.Text = "수정";
-            this.button3.UseVisualStyleBackColor = true;
+            this.updateBtn.Location = new System.Drawing.Point(123, 46);
+            this.updateBtn.Name = "updateBtn";
+            this.updateBtn.Size = new System.Drawing.Size(67, 23);
+            this.updateBtn.TabIndex = 3;
+            this.updateBtn.Text = "수정";
+            this.updateBtn.UseVisualStyleBackColor = true;
             // 
             // ItemCreate
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(648, 459);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.updateBtn);
+            this.Controls.Add(this.titleBox);
+            this.Controls.Add(this.contentBox);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.createBtn);
+            this.Controls.Add(this.backBtn);
             this.Name = "ItemCreate";
             this.Text = "ItemCreate";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.ItemCreate_FormClosed);
+            this.Load += new System.EventHandler(this.ItemCreate_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox contentBox;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button createBtn;
+        private System.Windows.Forms.Button backBtn;
+        private System.Windows.Forms.TextBox titleBox;
+        private System.Windows.Forms.Button updateBtn;
     }
 }
