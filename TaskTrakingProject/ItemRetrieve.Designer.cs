@@ -28,51 +28,53 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.ListViewItem listViewItem1 = new System.Windows.Forms.ListViewItem(new string[] {
-            "담당배정(홍길동)",
-            "2020-06-14"}, -1);
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.backBtn = new System.Windows.Forms.Button();
+            this.updateBtn = new System.Windows.Forms.Button();
+            this.deleteBtn = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
+            this.titleBox = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.contentBox = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
+            this.chargerBox = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.listView1 = new System.Windows.Forms.ListView();
-            this.button4 = new System.Windows.Forms.Button();
+            this.historyList = new System.Windows.Forms.ListView();
             this.내용 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.처리날짜 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.addHistoryBtn = new System.Windows.Forms.Button();
+            this.startBtn = new System.Windows.Forms.Button();
+            this.endBtn = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // button1
+            // backBtn
             // 
-            this.button1.Location = new System.Drawing.Point(50, 46);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(67, 23);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "뒤로";
-            this.button1.UseVisualStyleBackColor = true;
+            this.backBtn.Location = new System.Drawing.Point(50, 46);
+            this.backBtn.Name = "backBtn";
+            this.backBtn.Size = new System.Drawing.Size(67, 23);
+            this.backBtn.TabIndex = 0;
+            this.backBtn.Text = "뒤로";
+            this.backBtn.UseVisualStyleBackColor = true;
+            this.backBtn.Click += new System.EventHandler(this.backBtn_Click);
             // 
-            // button2
+            // updateBtn
             // 
-            this.button2.Location = new System.Drawing.Point(123, 46);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(67, 23);
-            this.button2.TabIndex = 1;
-            this.button2.Text = "수정";
-            this.button2.UseVisualStyleBackColor = true;
+            this.updateBtn.Location = new System.Drawing.Point(123, 46);
+            this.updateBtn.Name = "updateBtn";
+            this.updateBtn.Size = new System.Drawing.Size(67, 23);
+            this.updateBtn.TabIndex = 1;
+            this.updateBtn.Text = "수정";
+            this.updateBtn.UseVisualStyleBackColor = true;
+            this.updateBtn.Click += new System.EventHandler(this.updateBtn_Click);
             // 
-            // button3
+            // deleteBtn
             // 
-            this.button3.Location = new System.Drawing.Point(196, 46);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(67, 23);
-            this.button3.TabIndex = 2;
-            this.button3.Text = "삭제";
-            this.button3.UseVisualStyleBackColor = true;
+            this.deleteBtn.Location = new System.Drawing.Point(196, 46);
+            this.deleteBtn.Name = "deleteBtn";
+            this.deleteBtn.Size = new System.Drawing.Size(67, 23);
+            this.deleteBtn.TabIndex = 2;
+            this.deleteBtn.Text = "삭제";
+            this.deleteBtn.UseVisualStyleBackColor = true;
+            this.deleteBtn.Click += new System.EventHandler(this.deleteBtn_Click);
             // 
             // label1
             // 
@@ -83,14 +85,14 @@
             this.label1.TabIndex = 3;
             this.label1.Text = "제목";
             // 
-            // label2
+            // titleBox
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(105, 97);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(82, 15);
-            this.label2.TabIndex = 4;
-            this.label2.Text = "제목입니다";
+            this.titleBox.AutoSize = true;
+            this.titleBox.Location = new System.Drawing.Point(105, 97);
+            this.titleBox.Name = "titleBox";
+            this.titleBox.Size = new System.Drawing.Size(82, 15);
+            this.titleBox.TabIndex = 4;
+            this.titleBox.Text = "제목입니다";
             // 
             // label3
             // 
@@ -101,14 +103,14 @@
             this.label3.TabIndex = 5;
             this.label3.Text = "내용";
             // 
-            // textBox1
+            // contentBox
             // 
-            this.textBox1.Location = new System.Drawing.Point(108, 138);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.ReadOnly = true;
-            this.textBox1.Size = new System.Drawing.Size(465, 137);
-            this.textBox1.TabIndex = 6;
+            this.contentBox.Location = new System.Drawing.Point(108, 138);
+            this.contentBox.Multiline = true;
+            this.contentBox.Name = "contentBox";
+            this.contentBox.ReadOnly = true;
+            this.contentBox.Size = new System.Drawing.Size(465, 137);
+            this.contentBox.TabIndex = 6;
             // 
             // label4
             // 
@@ -119,14 +121,14 @@
             this.label4.TabIndex = 7;
             this.label4.Text = "담당자";
             // 
-            // label5
+            // chargerBox
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(521, 50);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(52, 15);
-            this.label5.TabIndex = 8;
-            this.label5.Text = "홍길동";
+            this.chargerBox.AutoSize = true;
+            this.chargerBox.Location = new System.Drawing.Point(521, 50);
+            this.chargerBox.Name = "chargerBox";
+            this.chargerBox.Size = new System.Drawing.Size(52, 15);
+            this.chargerBox.TabIndex = 8;
+            this.chargerBox.Text = "미배정";
             // 
             // label6
             // 
@@ -137,60 +139,82 @@
             this.label6.TabIndex = 9;
             this.label6.Text = "이력";
             // 
-            // listView1
+            // historyList
             // 
-            this.listView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.historyList.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.내용,
             this.처리날짜});
-            this.listView1.HideSelection = false;
-            this.listView1.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem1});
-            this.listView1.Location = new System.Drawing.Point(108, 290);
-            this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(465, 126);
-            this.listView1.TabIndex = 10;
-            this.listView1.TileSize = new System.Drawing.Size(150, 50);
-            this.listView1.UseCompatibleStateImageBehavior = false;
-            this.listView1.View = System.Windows.Forms.View.Details;
-            // 
-            // button4
-            // 
-            this.button4.Location = new System.Drawing.Point(27, 313);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(75, 23);
-            this.button4.TabIndex = 11;
-            this.button4.Text = "이력추가";
-            this.button4.UseVisualStyleBackColor = true;
+            this.historyList.HideSelection = false;
+            this.historyList.Location = new System.Drawing.Point(108, 290);
+            this.historyList.Name = "historyList";
+            this.historyList.Size = new System.Drawing.Size(465, 126);
+            this.historyList.TabIndex = 10;
+            this.historyList.TileSize = new System.Drawing.Size(150, 50);
+            this.historyList.UseCompatibleStateImageBehavior = false;
+            this.historyList.View = System.Windows.Forms.View.Details;
             // 
             // 내용
             // 
             this.내용.Text = "내용";
-            this.내용.Width = 354;
+            this.내용.Width = 242;
             // 
             // 처리날짜
             // 
             this.처리날짜.Text = "처리날짜";
-            this.처리날짜.Width = 102;
+            this.처리날짜.Width = 190;
+            // 
+            // addHistoryBtn
+            // 
+            this.addHistoryBtn.Location = new System.Drawing.Point(27, 313);
+            this.addHistoryBtn.Name = "addHistoryBtn";
+            this.addHistoryBtn.Size = new System.Drawing.Size(75, 23);
+            this.addHistoryBtn.TabIndex = 11;
+            this.addHistoryBtn.Text = "이력추가";
+            this.addHistoryBtn.UseVisualStyleBackColor = true;
+            // 
+            // startBtn
+            // 
+            this.startBtn.Location = new System.Drawing.Point(123, 46);
+            this.startBtn.Name = "startBtn";
+            this.startBtn.Size = new System.Drawing.Size(67, 23);
+            this.startBtn.TabIndex = 12;
+            this.startBtn.Text = "시작";
+            this.startBtn.UseVisualStyleBackColor = true;
+            this.startBtn.Click += new System.EventHandler(this.startBtn_Click);
+            // 
+            // endBtn
+            // 
+            this.endBtn.Location = new System.Drawing.Point(123, 46);
+            this.endBtn.Name = "endBtn";
+            this.endBtn.Size = new System.Drawing.Size(67, 23);
+            this.endBtn.TabIndex = 13;
+            this.endBtn.Text = "종료";
+            this.endBtn.UseVisualStyleBackColor = true;
             // 
             // ItemRetrieve
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(648, 459);
-            this.Controls.Add(this.button4);
-            this.Controls.Add(this.listView1);
+            this.Controls.Add(this.endBtn);
+            this.Controls.Add(this.startBtn);
+            this.Controls.Add(this.addHistoryBtn);
+            this.Controls.Add(this.historyList);
             this.Controls.Add(this.label6);
-            this.Controls.Add(this.label5);
+            this.Controls.Add(this.chargerBox);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.contentBox);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.label2);
+            this.Controls.Add(this.titleBox);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.deleteBtn);
+            this.Controls.Add(this.updateBtn);
+            this.Controls.Add(this.backBtn);
             this.Name = "ItemRetrieve";
             this.Text = "ItemRetrieve";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.ItemRetrieve_FormClosed);
+            this.Load += new System.EventHandler(this.ItemRetrieve_Load);
+            this.VisibleChanged += new System.EventHandler(this.ItemRetrieve_VisibleChanged);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -198,19 +222,21 @@
 
         #endregion
 
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button backBtn;
+        private System.Windows.Forms.Button updateBtn;
+        private System.Windows.Forms.Button deleteBtn;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label titleBox;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox contentBox;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label chargerBox;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.ListView listView1;
+        private System.Windows.Forms.ListView historyList;
         private System.Windows.Forms.ColumnHeader 내용;
         private System.Windows.Forms.ColumnHeader 처리날짜;
-        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button addHistoryBtn;
+        private System.Windows.Forms.Button startBtn;
+        private System.Windows.Forms.Button endBtn;
     }
 }

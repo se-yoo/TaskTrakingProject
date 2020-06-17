@@ -98,6 +98,7 @@
             this.updateBtn.TabIndex = 3;
             this.updateBtn.Text = "수정";
             this.updateBtn.UseVisualStyleBackColor = true;
+            this.updateBtn.Click += new System.EventHandler(this.updateBtn_Click);
             // 
             // ItemCreate
             // 

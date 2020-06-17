@@ -14,7 +14,9 @@ namespace TaskTrakingProject
     public partial class ItemCreate : Form
     {
         UserHome userHome;
+        ItemRetrieve itemRetrieve;
         Member member;
+        Task task;
         int formType { get; set; } // 0은 생성, 1은 수정
 
         public ItemCreate()
@@ -22,13 +24,23 @@ namespace TaskTrakingProject
             InitializeComponent();
         }
 
-        public ItemCreate(UserHome userHome, Member member, int type)
+        public ItemCreate(UserHome userHome, Member member)
         {
             InitializeComponent();
 
             this.userHome = userHome;
             this.member = member;
-            formType = type;
+            formType = 0;
+        }
+
+        public ItemCreate(ItemRetrieve itemRetrieve, Member member, Task task)
+        {
+            InitializeComponent();
+
+            this.itemRetrieve = itemRetrieve;
+            this.member = member;
+            this.task = task;
+            formType = 1;
         }
 
         private void ItemCreate_Load(object sender, EventArgs e)
@@ -40,13 +52,21 @@ namespace TaskTrakingProject
             else
             {
                 createBtn.Hide();
+                GetTaskInfo();
             }
         }
 
         private void backBtn_Click(object sender, EventArgs e)
         {
             this.Close();
-            userHome.Show();
+            if (formType == 0)
+            {
+                userHome.Show();
+            }
+            else
+            {
+                itemRetrieve.Show();
+            }
         }
 
         private void createBtn_Click(object sender, EventArgs e)
@@ -107,7 +127,47 @@ namespace TaskTrakingProject
         private void ItemCreate_FormClosed(object sender, FormClosedEventArgs e)
         {
             this.Close();
-            userHome.Show();
+            if (formType==0)
+            {
+                userHome.Show();
+            }
+            else
+            {
+                itemRetrieve.Show();
+            }
+        }
+
+        private void GetTaskInfo()
+        {
+            titleBox.Text = task.title;
+            contentBox.Text = task.content;
+        }
+
+        private void updateBtn_Click(object sender, EventArgs e)
+        {
+            using (MySqlConnection con = new MySqlConnection(Database.getConnection()))
+            {
+                MySqlCommand com = con.CreateCommand();
+
+                try
+                {
+                    con.Open();
+
+                    string sql = @"UPDATE task SET title='" +titleBox.Text+"', content='"+contentBox.Text+"' "+
+                                                "WHERE seq=" + task.seq;
+
+                    com.CommandText = sql;
+                    com.ExecuteNonQuery();
+
+                    this.Close();
+                    itemRetrieve.Show();
+                }
+                catch
+                {
+                    MessageBox.Show("데이터베이스 연결오류");
+                }
+                con.Close();
+            }
         }
     }
 }

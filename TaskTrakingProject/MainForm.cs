@@ -42,8 +42,8 @@ namespace TaskTrakingProject
                     }
                     else
                     {
-                        //AdminHome ah = new AdminHome(this, inputId.Text);
-                        //ah.ShowDialog();
+                        AdminHome ah = new AdminHome(this, loginMem);
+                        ah.ShowDialog();
                     }
                 }
                 else

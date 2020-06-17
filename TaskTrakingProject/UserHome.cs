@@ -53,6 +53,8 @@ namespace TaskTrakingProject
                         task.seq = System.Convert.ToInt32(reader["seq"]);
                         task.title = reader["title"].ToString();
                         task.rgstDate = reader["rgstDate"].ToString();
+                        task.status = System.Convert.ToInt32(reader["status"]);
+                        task.updateRead = System.Convert.ToInt32(reader["updateRead"]);
 
                         taskList.Add(task);
                         AddListViewTaskItem(task);
@@ -68,10 +70,16 @@ namespace TaskTrakingProject
 
         private void AddListViewTaskItem(Task task)
         {
-            ListViewItem item1 = new ListViewItem(task.title, task.status);
-            item1.SubItems.Add(task.rgstDate);
+            ListViewItem item = new ListViewItem(task.title, task.status);
+            item.SubItems.Add(task.rgstDate);
+            item.ForeColor = Color.Gray;
+            if (task.updateRead == 1)
+            {
+                item.ForeColor = Color.Black;
+                item.Font= new System.Drawing.Font(item.Font, System.Drawing.FontStyle.Bold);
+            }
 
-            resultList.Items.Add(item1);
+            resultList.Items.Add(item);
         }
 
         private void logoutBtn_Click(object sender, EventArgs e)
@@ -84,7 +92,7 @@ namespace TaskTrakingProject
         {
             this.Hide();
 
-            ItemCreate ic = new ItemCreate(this, member, 0);
+            ItemCreate ic = new ItemCreate(this, member);
             ic.ShowDialog();
         }
 
@@ -109,7 +117,11 @@ namespace TaskTrakingProject
                 var rectangle = resultList.GetItemRect(i);
                 if (rectangle.Contains(e.Location))
                 {
-                    return;
+                    this.Hide();
+
+                    ItemRetrieve ir = new ItemRetrieve(this, taskList[i], member);
+                    ir.ShowDialog();
+                    break;
                 }
             }
         }
