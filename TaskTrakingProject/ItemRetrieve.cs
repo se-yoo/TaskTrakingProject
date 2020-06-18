@@ -101,7 +101,7 @@ namespace TaskTrakingProject
                         taskHistory.seq = System.Convert.ToInt32(reader["seq"]);
                         taskHistory.content = reader["content"].ToString();
                         taskHistory.rgstDate = reader["rgstDate"].ToString();
-                        
+
                         AddListViewTaskHistoryItem(taskHistory);
                     }
 
@@ -127,10 +127,12 @@ namespace TaskTrakingProject
             this.Close();
             if (member.auth == 0)
             {
+                userHome.Location = new Point(this.Location.X, this.Location.Y);
                 userHome.Show();
             }
             else
             {
+                adminHome.Location = new Point(this.Location.X, this.Location.Y);
                 adminHome.Show();
             }
         }
@@ -140,10 +142,12 @@ namespace TaskTrakingProject
             this.Close();
             if (member.auth == 0)
             {
+                userHome.Location = new Point(this.Location.X, this.Location.Y);
                 userHome.Show();
             }
             else
             {
+                adminHome.Location = new Point(this.Location.X, this.Location.Y);
                 adminHome.Show();
             }
         }
@@ -171,15 +175,16 @@ namespace TaskTrakingProject
 
                         com.CommandText = sql;
                         com.ExecuteNonQuery();
-
-                        this.Close();
-                        userHome.Show();
                     }
                     catch
                     {
                         MessageBox.Show("데이터베이스 연결오류");
                     }
                     con.Close();
+
+                    this.Close();
+                    userHome.Location = new Point(this.Location.X, this.Location.Y);
+                    userHome.Show();
                 }
             }
         }
@@ -189,12 +194,13 @@ namespace TaskTrakingProject
             this.Hide();
 
             ItemCreate ic = new ItemCreate(this, member, task);
+            ic.Location = new Point(this.Location.X, this.Location.Y);
             ic.ShowDialog();
         }
 
         private void ItemRetrieve_VisibleChanged(object sender, EventArgs e)
         {
-            historyList.Clear();
+            historyList.Items.Clear();
             taskHistoryList.Clear();
 
             LoadTaskInfo();
@@ -272,9 +278,8 @@ namespace TaskTrakingProject
                     com.CommandText = sql;
                     com.ExecuteNonQuery();
 
-                    sql = @"INSERT INTO task_history (taskSeq, content, rgstDate) "
-                                            + "SELECT seq as taskSeq, '담당자배정' as content, NOW() as rgstDate "
-                                            + "FROM task WHERE seq='" + task.seq + "'";
+                    sql = @"INSERT INTO task_history (taskSeq, content, rgstDate) VALUES "
+                                            + "("+task.seq+", '담당자배정', NOW())";
 
                     com.CommandText = sql;
                     com.ExecuteNonQuery();
@@ -286,8 +291,52 @@ namespace TaskTrakingProject
                 con.Close();
 
                 this.Close();
+                adminHome.Location = new Point(this.Location.X, this.Location.Y);
                 adminHome.Show();
             }
+        }
+
+        private void endBtn_Click(object sender, EventArgs e)
+        {
+            using (MySqlConnection con = new MySqlConnection(Database.getConnection()))
+            {
+                MySqlCommand com = con.CreateCommand();
+
+                try
+                {
+                    con.Open();
+
+                    string sql = @"UPDATE task SET updateRead=1, status=2 " +
+                                                "WHERE seq=" + task.seq;
+
+                    com.CommandText = sql;
+                    com.ExecuteNonQuery();
+
+                    sql = @"INSERT INTO task_history (taskSeq, content, rgstDate) VALUES "
+                                            + "("+task.seq+", '처리완료', NOW()) ";
+
+                    com.CommandText = sql;
+                    com.ExecuteNonQuery();
+                }
+                catch
+                {
+                    MessageBox.Show("데이터베이스 연결오류");
+                }
+                con.Close();
+
+                this.Close();
+                adminHome.Location = new Point(this.Location.X, this.Location.Y);
+                adminHome.Show();
+            }
+        }
+
+        private void addHistoryBtn_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+
+            HistoryCreate hc = new HistoryCreate(this, task);
+            hc.Location = new Point(this.Location.X, this.Location.Y);
+            hc.ShowDialog();
         }
     }
 }

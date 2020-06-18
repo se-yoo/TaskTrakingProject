@@ -38,11 +38,13 @@ namespace TaskTrakingProject
                     if(loginMem.auth == 0)
                     {
                         UserHome uh = new UserHome(this, loginMem);
+                        uh.Location = new Point(this.Location.X, this.Location.Y);
                         uh.ShowDialog();
                     }
                     else
                     {
                         AdminHome ah = new AdminHome(this, loginMem);
+                        ah.Location = new Point(this.Location.X, this.Location.Y);
                         ah.ShowDialog();
                     }
                 }
@@ -83,12 +85,12 @@ namespace TaskTrakingProject
                     return tempM;
                 }
 
+                con.Close();
                 return null;
             }
             catch
             {
                 con.Close();
-
                 return null;
             }
         }

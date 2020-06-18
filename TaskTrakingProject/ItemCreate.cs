@@ -61,10 +61,12 @@ namespace TaskTrakingProject
             this.Close();
             if (formType == 0)
             {
+                userHome.Location = new Point(this.Location.X, this.Location.Y);
                 userHome.Show();
             }
             else
             {
+                itemRetrieve.Location = new Point(this.Location.X, this.Location.Y);
                 itemRetrieve.Show();
             }
         }
@@ -74,6 +76,7 @@ namespace TaskTrakingProject
             AddTask();
 
             this.Close();
+            userHome.Location = new Point(this.Location.X, this.Location.Y);
             userHome.Show();
         }
 
@@ -129,10 +132,12 @@ namespace TaskTrakingProject
             this.Close();
             if (formType==0)
             {
+                userHome.Location = new Point(this.Location.X, this.Location.Y);
                 userHome.Show();
             }
             else
             {
+                itemRetrieve.Location = new Point(this.Location.X, this.Location.Y);
                 itemRetrieve.Show();
             }
         }
@@ -160,6 +165,7 @@ namespace TaskTrakingProject
                     com.ExecuteNonQuery();
 
                     this.Close();
+                    itemRetrieve.Location = new Point(this.Location.X, this.Location.Y);
                     itemRetrieve.Show();
                 }
                 catch

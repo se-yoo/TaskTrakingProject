@@ -65,6 +65,7 @@ namespace TaskTrakingProject
                 {
                     MessageBox.Show("데이터베이스 연결오류");
                 }
+                con.Close();
             }
         }
 
@@ -85,6 +86,7 @@ namespace TaskTrakingProject
         private void logoutBtn_Click(object sender, EventArgs e)
         {
             this.Close();
+            mainForm.Location = new Point(this.Location.X, this.Location.Y);
             mainForm.Show();
         }
 
@@ -93,6 +95,7 @@ namespace TaskTrakingProject
             this.Hide();
 
             ItemCreate ic = new ItemCreate(this, member);
+            ic.Location = new Point(this.Location.X, this.Location.Y);
             ic.ShowDialog();
         }
 
@@ -107,6 +110,7 @@ namespace TaskTrakingProject
         private void UserHome_FormClosed(object sender, FormClosedEventArgs e)
         {
             this.Close();
+            mainForm.Location = new Point(this.Location.X, this.Location.Y);
             mainForm.Show();
         }
 
@@ -120,6 +124,7 @@ namespace TaskTrakingProject
                     this.Hide();
 
                     ItemRetrieve ir = new ItemRetrieve(this, taskList[i], member);
+                    ir.Location = new Point(this.Location.X, this.Location.Y);
                     ir.ShowDialog();
                     break;
                 }

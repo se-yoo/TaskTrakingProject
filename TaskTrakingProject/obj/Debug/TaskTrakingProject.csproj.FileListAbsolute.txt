@@ -24,3 +24,4 @@ D:\CProject\TaskTrakingProject\TaskTrakingProject\bin\Debug\K4os.Compression.LZ4
 D:\CProject\TaskTrakingProject\TaskTrakingProject\bin\Debug\K4os.Hash.xxHash.dll
 D:\CProject\TaskTrakingProject\TaskTrakingProject\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
 D:\CProject\TaskTrakingProject\TaskTrakingProject\obj\Debug\TaskTrakingProject.csproj.CopyComplete
+D:\CProject\TaskTrakingProject\TaskTrakingProject\obj\Debug\TaskTrakingProject.HistoryCreate.resources

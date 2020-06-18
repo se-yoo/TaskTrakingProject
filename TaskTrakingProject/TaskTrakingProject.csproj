@@ -57,6 +57,12 @@
       <DependentUpon>AdminHome.cs</DependentUpon>
     </Compile>
     <Compile Include="Database.cs" />
+    <Compile Include="HistoryCreate.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="HistoryCreate.Designer.cs">
+      <DependentUpon>HistoryCreate.cs</DependentUpon>
+    </Compile>
     <Compile Include="ItemCreate.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -88,6 +94,9 @@
     </Compile>
     <EmbeddedResource Include="AdminHome.resx">
       <DependentUpon>AdminHome.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="HistoryCreate.resx">
+      <DependentUpon>HistoryCreate.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ItemCreate.resx">
       <DependentUpon>ItemCreate.cs</DependentUpon>
