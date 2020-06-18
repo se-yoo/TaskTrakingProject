@@ -44,6 +44,8 @@
             this.addHistoryBtn = new System.Windows.Forms.Button();
             this.startBtn = new System.Windows.Forms.Button();
             this.endBtn = new System.Windows.Forms.Button();
+            this.rgstBox = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // backBtn
@@ -143,7 +145,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label4.Location = new System.Drawing.Point(405, 40);
+            this.label4.Location = new System.Drawing.Point(405, 48);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(43, 15);
             this.label4.TabIndex = 7;
@@ -153,7 +155,7 @@
             // 
             this.chargerBox.AutoSize = true;
             this.chargerBox.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.chargerBox.Location = new System.Drawing.Point(456, 40);
+            this.chargerBox.Location = new System.Drawing.Point(456, 48);
             this.chargerBox.Name = "chargerBox";
             this.chargerBox.Size = new System.Drawing.Size(43, 15);
             this.chargerBox.TabIndex = 8;
@@ -246,12 +248,34 @@
             this.endBtn.UseVisualStyleBackColor = false;
             this.endBtn.Click += new System.EventHandler(this.endBtn_Click);
             // 
+            // rgstBox
+            // 
+            this.rgstBox.AutoSize = true;
+            this.rgstBox.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.rgstBox.Location = new System.Drawing.Point(456, 26);
+            this.rgstBox.Name = "rgstBox";
+            this.rgstBox.Size = new System.Drawing.Size(43, 15);
+            this.rgstBox.TabIndex = 15;
+            this.rgstBox.Text = "홍길동";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label5.Location = new System.Drawing.Point(405, 26);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(43, 15);
+            this.label5.TabIndex = 14;
+            this.label5.Text = "작성자";
+            // 
             // ItemRetrieve
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(567, 367);
+            this.Controls.Add(this.rgstBox);
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.endBtn);
             this.Controls.Add(this.startBtn);
             this.Controls.Add(this.addHistoryBtn);
@@ -296,5 +320,7 @@
         private System.Windows.Forms.Button addHistoryBtn;
         private System.Windows.Forms.Button startBtn;
         private System.Windows.Forms.Button endBtn;
+        private System.Windows.Forms.Label rgstBox;
+        private System.Windows.Forms.Label label5;
     }
 }

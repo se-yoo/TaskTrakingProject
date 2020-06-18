@@ -12,6 +12,7 @@ namespace TaskTrakingProject
         public string title { get; set; }
         public string content { get; set; }
         public string rgstMemId { get; set; }
+        public string rgstMemName { get; set; }
         public string chargeMemId { get; set; }
         public string chargeMemName { get; set; }
         public int status { get; set; }

@@ -52,8 +52,8 @@ namespace TaskTrakingProject
                 {
                     con.Open();
 
-                    string sql = @"SELECT *, (SELECT name FROM member WHERE id=t.chargeMemId) as chargeMemName "
-                                                +"FROM task t WHERE seq='" + task.seq + "'";
+                    string sql = @"SELECT *, (SELECT name FROM member WHERE id=t.rgstMemId) as rgstMemName, (SELECT name FROM member WHERE id=t.chargeMemId) as chargeMemName "
+                                                + "FROM task t WHERE seq='" + task.seq + "'";
 
                     com.CommandText = sql;
                     MySqlDataReader reader = com.ExecuteReader();
@@ -64,6 +64,7 @@ namespace TaskTrakingProject
                     task.title = reader["title"].ToString();
                     task.content = reader["content"].ToString();
                     task.rgstMemId = reader["rgstMemId"].ToString();
+                    task.rgstMemName = reader["rgstMemName"].ToString();
                     task.chargeMemId = reader["chargeMemId"].ToString();
                     task.chargeMemName = reader["chargeMemName"].ToString();
                     task.status = System.Convert.ToInt32(reader["status"]);
@@ -165,13 +166,13 @@ namespace TaskTrakingProject
                         con.Open();
 
                         string sql = @"DELETE FROM task_history " +
-                                                    "WHERE taskSeq='" + task.seq + "'";
+                                                    "WHERE taskSeq=" + task.seq;
 
                         com.CommandText = sql;
                         com.ExecuteNonQuery();
 
 
-                        sql = @"DELETE FROM task WHERE seq='" + task.seq + "'";
+                        sql = @"DELETE FROM task WHERE seq=" + task.seq;
 
                         com.CommandText = sql;
                         com.ExecuteNonQuery();
@@ -181,6 +182,8 @@ namespace TaskTrakingProject
                         MessageBox.Show("데이터베이스 연결오류");
                     }
                     con.Close();
+
+                    task.seq = -1;
 
                     this.Close();
                     userHome.Location = new Point(this.Location.X, this.Location.Y);
@@ -203,35 +206,39 @@ namespace TaskTrakingProject
             historyList.Items.Clear();
             taskHistoryList.Clear();
 
-            LoadTaskInfo();
-            LoadTaskHistorys();
+            if(task.seq>0)
+            {
+                LoadTaskInfo();
+                LoadTaskHistorys();
 
-            addHistoryBtn.Hide();
-            updateBtn.Hide();
-            deleteBtn.Hide();
-            startBtn.Hide();
-            endBtn.Hide();
+                addHistoryBtn.Hide();
+                updateBtn.Hide();
+                deleteBtn.Hide();
+                startBtn.Hide();
+                endBtn.Hide();
 
-            if (member.auth == 0 && task.status == 0)
-            {
-                updateBtn.Show();
-                deleteBtn.Show();
-            }
-            else if(member.auth == 1 && task.status == 0)
-            {
-                startBtn.Show();
-            }
-            else if (member.auth==1 && task.status == 1)
-            {
-                addHistoryBtn.Show();
-                endBtn.Show();
-            }
+                if (member.auth == 0 && task.status == 0)
+                {
+                    updateBtn.Show();
+                    deleteBtn.Show();
+                }
+                else if (member.auth == 1 && task.status == 0)
+                {
+                    startBtn.Show();
+                }
+                else if (member.auth == 1 && task.status == 1)
+                {
+                    addHistoryBtn.Show();
+                    endBtn.Show();
+                }
 
-            titleBox.Text = task.title;
-            contentBox.Text = task.content;
-            if (task.chargeMemId.CompareTo("") != 0 && task.chargeMemId != null)
-            {
-                chargerBox.Text = task.chargeMemName;
+                titleBox.Text = task.title;
+                contentBox.Text = task.content;
+                rgstBox.Text = task.rgstMemName;
+                if (task.chargeMemId.CompareTo("") != 0 && task.chargeMemId != null)
+                {
+                    chargerBox.Text = task.chargeMemName;
+                }
             }
         }
 
